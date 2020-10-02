@@ -1,0 +1,18 @@
+---
+- name : ec2-javawebapp
+  hosts: localhost
+  connection: local
+  tasks :
+  - name : launch ec2 instance for java web app
+    ec2 :
+     instance_type : t2.micro
+     key_name : bootcampdevops
+     image : ami-0f884a43c583aa2fb
+     region : us-east-2
+     group : launch-wizard-2
+     count : 1
+     vpc_subnet_id : subnet-734f4109
+     wait : yes
+     assign_public_ip : yes
+     instance_tags:
+       name: dockerinstance
